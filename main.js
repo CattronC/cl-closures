@@ -3,14 +3,22 @@
 // We can access innterVar
 
 // ! Exercise 2
-function mainFunction(paramOut) {
-    innerFunction();
-    function innerFunction(paramIn){};
-    console.log(mainFunction);
-    console.log(innerFunction);
+
+
+function outerFunction() {
+	let outerVar = "I'm outside!";
+	function innerFunction() {
+		let innerVar = "I'm inside!";
+		console.log(outerVar); // Can we access outerVar?
+		console.log(innerVar); // Can we access innerVar?
+	}
+
+	innerFunction();
 }
 
-mainFunction();
+outerFunction();
+
+
 
 // ! Exercise 3
 function outExThree(a){
@@ -27,22 +35,25 @@ console.log(outerAns(6));
 
 
 // ! Exercise 4
+
+
 let globalVar = "global"
 console.log(globalVar)
 
-function modGlobal(mod1){
-    let globalVar = mod1;
+function modGlobal(){
+    globalVar = "ninety-eight";
     console.log(globalVar);
 }
 
-modGlobal('modified');
+modGlobal();
 
 function localVar(){
-    let local = 2;
-    // let local = 2;  
-    // * cannot redefine two local variables of the same name. Throws an error.
-    console.log(local);
+    let globalVar = 98;
+    console.log(globalVar);
 }
+
+localVar();
+console.log(globalVar)
 
 // ! Exercise 5
 
@@ -75,7 +86,7 @@ function setupCounter(num) {
     let count = num
     return function() {
         // Increment and print the count
-        const incr = ++count;
+        const incr = count++;
         console.log(incr);
     }
 }
@@ -87,10 +98,11 @@ counter();
 counter();
 
 // ! Exercise 8
-// TODO: learn how to make a counter function then redo this. It should increment every time the function is called.
 
 console.log('Exercise 8')
+
 const ifElse = exe8(0)
+
 ifElse()
 
 function exe8 (num){
@@ -104,6 +116,7 @@ function exe8 (num){
         }
     }
 }
+
 ifElse()
 ifElse()
 ifElse()
@@ -136,7 +149,6 @@ function starFactory(star){
 
 const setStar = starFactory('Helios');
 setStar('Sol');
-
-
+setStar('Sun');
 // * Both changes are returned 
 
